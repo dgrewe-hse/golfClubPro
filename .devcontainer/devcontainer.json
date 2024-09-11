@@ -1,0 +1,25 @@
+{
+  "name": "Golfclub Management DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "golfclub-management",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "java.home": "/docker-java-home",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        }
+      }
+    }
+  },
+  "postCreateCommand": "npm install --prefix turnier-auswertung && npm install --prefix benachrichtigung-service",
+  "remoteUser": "vscode"
+}

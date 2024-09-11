@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  golfclub-management:
+    build:
+      context: ../golfclub-management
+    container_name: springboot
+    volumes:
+      - ../golfclub-management:/workspace
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_HOME=/docker-java-home
+      - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - app-network
+
+  turnier-auswertung:
+    build:
+      context: ../turnier-auswertung
+    container_name: nodejs-auswertung
+    volumes:
+      - ../turnier-auswertung:/workspace/turnier-auswertung
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+
+  benachrichtigung-service:
+    build:
+      context: ../benachrichtigung-service
+    container_name: nodejs-benachrichtigung
+    volumes:
+      - ../benachrichtigung-service:/workspace/benachrichtigung-service
+    ports:
+      - "3002:3002"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
