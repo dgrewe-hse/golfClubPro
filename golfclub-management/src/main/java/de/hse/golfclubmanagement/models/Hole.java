@@ -22,10 +22,10 @@ import javax.persistence.*;
  * @since   0.1
  */
 @Entity
-public class Bahn {
+public class Hole {
 
     /**
-     * Unique identifier for each Bahn.
+     * Unique identifier for each hole.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -12,7 +12,7 @@
  */
 package de.hse.golfclubmanagement.repositories;
 
-import de,hse.golfclubmanagement.models.Tournament;
+import de.hse.golfclubmanagement.models.Tournament;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

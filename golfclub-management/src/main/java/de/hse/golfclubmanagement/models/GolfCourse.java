@@ -51,10 +51,6 @@ public class GolfCourse {
     // ####################
     // Getters and setters
 
-    public Long getId() {
-        return id;
-    }
-
    /**
      * Gets the unique identifier for this golf course.
      * 
