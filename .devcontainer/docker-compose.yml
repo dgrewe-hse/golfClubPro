@@ -1,6 +1,10 @@
+# Copyright (c) 2024. All rights reserved.
+# author: Dennis Grewe
 version: '3'
 
-services:
+  # golfclub management container to add,
+  # update, delete golfcourse entities from/to
+  # the data base
   golfclub-management:
     build:
       context: ../golfclub-management
@@ -15,28 +19,9 @@ services:
     networks:
       - app-network
 
-  turnier-auswertung:
-    build:
-      context: ../turnier-auswertung
-    container_name: nodejs-auswertung
-    volumes:
-      - ../turnier-auswertung:/workspace/turnier-auswertung
-    ports:
-      - "3001:3001"
-    networks:
-      - app-network
-
-  benachrichtigung-service:
-    build:
-      context: ../benachrichtigung-service
-    container_name: nodejs-benachrichtigung
-    volumes:
-      - ../benachrichtigung-service:/workspace/benachrichtigung-service
-    ports:
-      - "3002:3002"
-    networks:
-      - app-network
-
+# define a local bridge network
+# to allow containers to discover
+# and interact with each other
 networks:
   app-network:
     driver: bridge
