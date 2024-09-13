@@ -1,0 +1,93 @@
+# Copyright (c) 2024. All rights reserved.
+# docker-compose file only for development purposes
+# author: Dennis Grewe
+version: '3'
+
+# list of services that shall be spinned up
+services:
+  # local data base container
+  # only for testing purposes
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: golfclub
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql # Persist MySQL data to a Docker volume
+    networks:
+      - golfclub-network
+
+  # golfclub management container to add,
+  # update, delete golfcourse entities from/to
+  # the data base
+  golfclub-management:
+    build:
+      context: ../golfclub-management
+    container_name: springboot
+    volumes:
+      - ../golfclub-management:/workspace
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/golfclub
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+      JAVA_HOME: /docker-java-home
+      SPRING_PROFILES_ACTIVE: dev
+    links:
+      - mysql-db:mysql-db
+    depends_on:
+      - mysql-db
+    networks:
+      - golfclub-network
+
+  vue-frontend:
+    build:
+      context: ../frontend  # This is the path to the Vue.js project directory
+      dockerfile: Dockerfile  # Dockerfile is in the root of the frontend directory
+    container_name: vue-frontend
+    volumes:
+      - ../frontend:/workspace  # Mount the frontend source code for live reloading
+    ports:
+      - "8081:8081"  # Expose the port (8081) for the Vue.js dev server
+    environment:
+      - NODE_ENV=development
+    networks:
+      - golfclub-network
+
+  # turnier-auswertung:
+  #   build:
+  #     context: ../turnier-auswertung
+  #   container_name: nodejs-auswertung
+  #   volumes:
+  #     - ../turnier-auswertung:/workspace/turnier-auswertung
+  #   ports:
+  #     - "3001:3001"
+  #   networks:
+  #     - app-network
+
+  # benachrichtigung-service:
+  #   build:
+  #     context: ../benachrichtigung-service
+  #   container_name: nodejs-benachrichtigung
+  #   volumes:
+  #     - ../benachrichtigung-service:/workspace/benachrichtigung-service
+  #   ports:
+  #     - "3002:3002"
+  #   networks:
+  #     - app-network
+
+volumes:
+  mysql-data: # Declare the volume for persisting MySQL data
+
+# define a local bridge network
+# to allow containers to discover
+# and interact with each other
+networks:
+  golfclub-network:
+    driver: bridge
