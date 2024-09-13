@@ -27,7 +27,7 @@ import java.util.List;
  * @since   0.1
  */
 @RestController
-@RequestMapping("/golfcourses")
+@RequestMapping("/api/v1/golfcourses")
 public class GolfCourseController {
 
     @Autowired

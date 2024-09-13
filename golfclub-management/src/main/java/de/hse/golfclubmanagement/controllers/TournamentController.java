@@ -27,7 +27,7 @@ import java.util.List;
  * @since   0.1
  */
 @RestController
-@RequestMapping("/tournaments")
+@RequestMapping("/api/v1/tournaments")
 public class TournamentController {
 
     @Autowired

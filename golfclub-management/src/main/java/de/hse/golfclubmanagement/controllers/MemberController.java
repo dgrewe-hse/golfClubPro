@@ -27,7 +27,7 @@ import java.util.List;
  * @since   0.1
  */
 @RestController
-@RequestMapping("/members")
+@RequestMapping("/api/v1/members")
 public class MemberController {
 
     @Autowired
