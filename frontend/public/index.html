@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GolfClubPro - Manage Your Golf Club(s)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.5.0/dist/vuetify.min.css">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Header Styles */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f1f1f1; /* Same color as footer */
+        color: #1976d2; /* Changed to match the primary theme */
+      }
+      .header-left {
+        display: flex;
+        align-items: center;
+      }
+      .header-left img {
+        width: 40px; /* Placeholder icon size */
+        margin-right: 10px;
+      }
+      .header-title {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      .login-btn {
+        background-color: #1976d2; /* Vuetify primary color */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .login-btn:hover {
+        background-color: #1565c0; /* Darker primary color */
+      }
+
+      /* Hero Section */
+      .hero {
+        background-image: url('/images/golf-course.jpg'); /* Replace with actual image URL */
+        background-size: cover;
+        background-position: center;
+        height: 30vh; /* Adjusted height */
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        font-weight: 300;
+      }
+      .features {
+        padding: 40px 20px;
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-align: center; /* Centered text */
+        margin-top: auto;
+        font-size: 0.9rem;
+      }
+      footer a {
+        color: #1976d2;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      .footer-disclaimer {
+        font-size: 0.75rem;
+        margin-top: 10px;
+        font-style: italic; /* Italic disclaimer */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <img src="/images/icon.webp" alt="Icon">
+        <span class="header-title">GolfClubPro</span>
+      </div>
+      <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+    </header>
+
+    <div id="app"></div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPL-3.0 License</a> | 
+        <a href="https://github.com/yourusername/yourproject" target="_blank">GitHub Repository</a>
+      </p>
+      <p class="footer-disclaimer">Disclaimer: All content is for educational purposes only. I do not intend for the content to be a substitute for professional usage.</p>
+      <p class="footer-disclaimer">Software Testing module (SWB 105 6043) at Esslingen University</p>
+    </footer>
+
+    <script src="/dist/build.js"></script>
+  </body>
+</html>
