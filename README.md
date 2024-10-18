@@ -42,7 +42,6 @@ $ brew install java maven git # to install latest java jdk, maven and git all in
 $ java -version # check if java installation was correct
 $ maven -version # check if maven installation was correct
 $ brew install node # to install node and npm
-$ brew install python # to install python 
 # (optional)
 $ git --version # check if git installation was correct
 ```
