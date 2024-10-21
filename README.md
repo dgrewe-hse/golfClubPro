@@ -57,3 +57,5 @@ $ cd golfClubPro/docker-compose # go into the compose directory
 $ docker-compose -f docker-compose.yml build    # builds you all the containers required
 $ docker-compose -f docker-compose.yml up       # to start all containers in a composed environment | use "down" to stop the containers properly
 ```
+
+Afterwards, open a Web browser (e.g., Google Chrome, Mozilla Firefox or Microsoft Edge) and navigate to the local instance of the golfClubPro application on [http://localhost:8081/](http://localhost:8081/).
