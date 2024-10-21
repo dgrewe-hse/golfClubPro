@@ -71,16 +71,22 @@ services:
   #   networks:
   #     - app-network
 
-  # benachrichtigung-service:
-  #   build:
-  #     context: ../benachrichtigung-service
-  #   container_name: nodejs-benachrichtigung
-  #   volumes:
-  #     - ../benachrichtigung-service:/workspace/benachrichtigung-service
-  #   ports:
-  #     - "3002:3002"
-  #   networks:
-  #     - app-network
+  notification-service:
+    build:
+      context: ../notification-service
+      dockerfile: Dockerfile
+    container_name: notification-service
+    volumes:
+      - ../notification-service:/app
+    ports:
+      - "8082:8082"
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=sqlite:////app/notifications.db
+    networks:
+      - golfclub-network
+    depends_on:
+      - mysql-db
 
 volumes:
   mysql-data: # Declare the volume for persisting MySQL data
