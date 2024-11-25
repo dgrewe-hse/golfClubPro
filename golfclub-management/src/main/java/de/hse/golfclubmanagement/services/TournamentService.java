@@ -33,11 +33,16 @@ public class TournamentService {
 
     /**
      * Adds a new Tournament entity to the database.
+     * Validates the input to ensure the Tournament is not null and has a valid name.
      *
      * @param tournament the Tournament entity to add
      * @return the saved Tournament entity
+     * @throws IllegalArgumentException if the Tournament is null or has invalid data
      */
     public Tournament addTournament(Tournament tournament) {
+        if (tournament == null || tournament.getName() == null || tournament.getName().isBlank()) {
+            throw new IllegalArgumentException("Tournament or its name cannot be null or blank");
+        }
         return tournamentRepository.save(tournament);
     }
 
@@ -52,11 +57,17 @@ public class TournamentService {
 
     /**
      * Finds a Tournament by its name.
+     * Validates the input to ensure the name is not null or blank.
      *
      * @param name the name of the Tournament to find
      * @return the Tournament with the specified name, or null if not found
+     * @throws IllegalArgumentException if the name is null or blank
      */
     public Tournament findByName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be null or blank");
+        }
         return tournamentRepository.findByName(name);
     }
+
 }

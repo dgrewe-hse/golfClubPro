@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Date;
 
 /**
  * REST controller for managing Tournament entities.
@@ -41,6 +42,18 @@ public class TournamentController {
      */
     @PostMapping
     public ResponseEntity<Tournament> addTournament(@RequestBody Tournament tournament) {
+        if (tournament == null) {
+            throw new IllegalArgumentException("Tournament must not be null");
+        }
+        if (tournament.getName() == null || tournament.getName().isEmpty()) {
+            throw new IllegalArgumentException("Tournament name must not be empty");
+        }
+        if (tournament.getDate() == null) {
+            throw new IllegalArgumentException("Tournament date must not be null");
+        }
+        if (tournament.getDate().before(new Date())) {
+            throw new IllegalArgumentException("Tournament date must not be in the past");
+        }
         Tournament savedTournament = tournamentService.addTournament(tournament);
         return ResponseEntity.ok(savedTournament);
     }
