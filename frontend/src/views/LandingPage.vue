@@ -5,7 +5,7 @@
       <v-col cols="12" class="text-center">
         <h1>Welcome to GolfClubPro</h1>
         <p>Your solution for managing golf courses, members, and tournaments.</p>
-        <v-btn color="primary" dark large @click="goToLogin">
+        <v-btn color="primary" id="login-button" dark large @click="goToLogin">
           Login / Sign up
         </v-btn>
       </v-col>
